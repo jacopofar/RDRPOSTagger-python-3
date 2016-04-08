@@ -99,8 +99,12 @@ def createLexicon(corpusFilePath, fullLexicon):
     tagCounter_CapitalizedWord = OrderedDict(sorted(tagCounter_CapitalizedWord.iteritems(), key = itemgetter(1), reverse = True))
     tagCounter_Numeric = OrderedDict(sorted(tagCounter_Numeric.iteritems(), key = itemgetter(1), reverse = True))
     tag4UnknWord = tagCounter_Alphabet.keys()[0]
-    tag4UnknCapitalizedWord = tagCounter_CapitalizedWord.keys()[0]
-    tag4UnknNum = tagCounter_Numeric.keys()[0]
+    tag4UnknCapitalizedWord = tag4UnknWord
+    tag4UnknNum = tag4UnknWord
+    if len(tagCounter_CapitalizedWord) > 0:
+        tag4UnknCapitalizedWord = tagCounter_CapitalizedWord.keys()[0]
+    if len(tagCounter_Numeric) > 0:
+        tag4UnknNum = tagCounter_Numeric.keys()[0]
     
     # Write to file
     fileSuffix = ".sDict"
