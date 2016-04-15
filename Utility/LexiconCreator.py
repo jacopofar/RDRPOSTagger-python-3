@@ -37,7 +37,10 @@ def createLexicon(corpusFilePath, fullLexicon):
         pairs = lines[i].strip().replace("“", "''").replace("”", "''").replace("\"", "''").split()
         for pair in pairs:
             word, tag = getWordTag(pair)
-            add2WordTagFreqDict(word, tag, wordTagCounter)
+            if (len(word) >= (len(pair) - 1)) or (len(tag) >= (len(pair) - 1)):
+                print "Incorrectly formatted " + str(i+1) + "th sentence at:", pair
+            else:
+                add2WordTagFreqDict(word, tag, wordTagCounter)
     
     from operator import itemgetter
     dictionary = {}
