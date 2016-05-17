@@ -1,4 +1,6 @@
-####Tagging results (in %):
+####Pre-trained Universal POS tagging models for 40 languages
+
+The models are trained using the training data from <a href="http://universaldependencies.org/" target="_blank">the Universal Dependencies (UD) project</a> (version 1.3). The tagging accuracies on the UD v1.3 test sets are as follows:
 
 UD_Ancient_Greek : 91.5686507465
 
@@ -102,4 +104,4 @@ UD_Tamil : 82.0888685295
 
 UD_Turkish : 91.9262341167
 
-Noted that the accuracy is obtained with a weak initial tagger (The internal initial tagger developed inside RDRPOSTagger is simply based on a lexicon extracted from the training set). It is likely to obtain higher results with a stronger external initial tagger such as TnT.
+Noted that the accuracy is obtained with a weak initial tagger (The internal initial tagger developed inside RDRPOSTagger is simply based on a lexicon extracted from the training set). It is likely to obtain higher results with a stronger external initial tagger such as <a href="http://www.coli.uni-saarland.de/~thorsten/tnt/" target="_blank">the TnT tagger</a>.
