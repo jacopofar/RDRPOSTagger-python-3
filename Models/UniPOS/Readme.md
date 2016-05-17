@@ -101,3 +101,5 @@ UD_Swedish-LinES : 94.4701020904
 UD_Tamil : 82.0888685295
 
 UD_Turkish : 91.9262341167
+
+Noted that the accuracy is obtained with a weak initial tagger (The internal initial tagger developed inside RDRPOSTagger is simply based on a lexicon extracted from the training set). It is likely to obtain higher results with a stronger external initial tagger such as TnT.
