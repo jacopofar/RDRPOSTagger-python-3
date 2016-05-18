@@ -1,6 +1,6 @@
 ####Pre-trained Universal POS tagging models for 40 languages
 
-The models are trained using the training data from <a href="http://universaldependencies.org/" target="_blank">the Universal Dependencies (UD) project</a> (version 1.3). The tagging accuracies on the UD v1.3 test sets are as follows:
+The models are learned using the training data from <a href="http://universaldependencies.org/" target="_blank">the Universal Dependencies (UD) project</a> (version 1.3). The tagging accuracies on the UD v1.3 test sets are as follows:
 
 UD_Ancient_Greek : 91.5686507465
 
