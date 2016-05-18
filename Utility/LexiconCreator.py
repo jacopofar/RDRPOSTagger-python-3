@@ -138,4 +138,3 @@ def createLexicon(corpusFilePath, fullLexicon):
             fileOut.write(suffix + " " + tag + "\n")
             
     fileOut.close()
-
