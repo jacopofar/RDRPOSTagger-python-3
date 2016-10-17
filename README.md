@@ -2,7 +2,7 @@
 
 **RDRPOSTagger** is a robust, easy-to-use and language-independent toolkit for POS and morphological tagging. It employs an error-driven approach to automatically construct tagging rules in the form of a binary tree. The main properties of RDRPOSTagger are as follows:
 
-- RDRPOSTagger obtains fast performance in both learning and tagging process.
+- RDRPOSTagger obtains very fast performance in both learning and tagging process.
 
 - RDRPOSTagger achieves a very competitive accuracy in comparison to the state-of-the-art results. See experimental results including performance speed and tagging accuracy for 13 languages in our *AI Communications* article.
 
@@ -16,8 +16,8 @@ The general architecture and experimental results of RDRPOSTagger can be found i
 
 **Please cite** either the EACL or the AICom paper whenever RDRPOSTagger is used to produce published results or incorporated into other software.
 
-RDRPOSTagger is also available to download (10MB .zip file) at: [https://sourceforge.net/projects/rdrpostagger/files/RDRPOSTagger_v1.2.2.zip](https://sourceforge.net/projects/rdrpostagger/files/RDRPOSTagger_v1.2.2.zip)
+RDRPOSTagger is also available to download (10MB .zip file including all pre-trained models) at: [https://sourceforge.net/projects/rdrpostagger/files/RDRPOSTagger_v1.2.3.zip](https://sourceforge.net/projects/rdrpostagger/files/RDRPOSTagger_v1.2.3.zip)
 
-**Find the full usage of RDRPOSTagger at its website:** [http://rdrpostagger.sourceforge.net/](http://rdrpostagger.sourceforge.net/)
+**Find more information about RDRPOSTagger at its website:** [http://rdrpostagger.sourceforge.net/](http://rdrpostagger.sourceforge.net/)
 
 
