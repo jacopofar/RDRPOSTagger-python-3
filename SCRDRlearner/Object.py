@@ -129,7 +129,8 @@ class FWObject:
             self.context[10] = "<SFX>"# suffix
             self.context[11] = "<SFX>"
             self.context[12] = "<SFX>"
-    
+        self.notNoneIds = []
+        
     @staticmethod
     def getFWObject(startWordTags, index):
         object = FWObject(True)
@@ -166,10 +167,10 @@ class FWObject:
            
         return object
     
-    def isSatisfied(self, fwObject):
-        for i in xrange(13):
-            key = self.context[i]
-            if (key is not None):
-                if key != fwObject.context[i]:
-                    return False
-        return True
+#    def isSatisfied(self, fwObject):
+#        for i in xrange(13):
+#            key = self.context[i]
+#            if (key is not None):
+#                if key != fwObject.context[i]:
+#                    return False
+#        return True

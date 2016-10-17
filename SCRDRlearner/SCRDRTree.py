@@ -81,12 +81,12 @@ class SCRDRTree:
         while True:
             #Check whether object satisfying the current node's condition
             cnContext = currentNode.condition.context
+            notNoneIds = currentNode.condition.notNoneIds
             satisfied = True
-            for i in xrange(13):
-                if (cnContext[i] is not None):
-                    if cnContext[i] != obContext[i]:
-                        satisfied = False
-                        break
+            for i in notNoneIds:
+                if cnContext[i] != obContext[i]:
+                    satisfied = False
+                    break
                     
             if(satisfied):
                 firedNode = currentNode
@@ -183,7 +183,9 @@ def getCondition(strCondition):
             condition.context[11] = value
         elif key == "suffixL4":
             condition.context[12] = value
-            
+    for i in xrange(13):
+        if condition.context[i] is not None:
+            condition.notNoneIds.append(i)        
     return condition
     
 if __name__ == "__main__":
