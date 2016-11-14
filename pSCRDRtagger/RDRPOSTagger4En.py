@@ -25,12 +25,12 @@ class RDRPOSTagger4En(SCRDRTree):
     """
     def __init__(self):
         self.root = None
-    
+
     def tagRawEnSentence(self, DICT, rawLine):
         line = initializeEnSentence(DICT, rawLine)
         sen = []
         wordTags = line.split()
-        for i in xrange(len(wordTags)):
+        for i in range(len(wordTags)):
             fwObject = FWObject.getFWObject(wordTags, i)
             word, tag = getWordTag(wordTags[i])
             node = self.findFiredNode(fwObject)
@@ -39,7 +39,7 @@ class RDRPOSTagger4En(SCRDRTree):
             else:# Fired at root, return initialized tag
                 sen.append(word + "/" + tag)
         return " ".join(sen)
-    
+
     def tagRawEnCorpus(self, DICT, rawCorpusPath):
         lines = open(rawCorpusPath, "r").readlines()
         #Change the value of NUMBER_OF_PROCESSES to obtain faster tagging process!
@@ -47,12 +47,12 @@ class RDRPOSTagger4En(SCRDRTree):
         taggedLines = pool.map(unwrap_self_RDRPOSTagger4En, zip([self] * len(lines), [DICT] * len(lines), lines))
         outW = open(rawCorpusPath + ".TAGGED", "w")
         for line in taggedLines:
-            outW.write(line + "\n")  
+            outW.write(line + "\n")
         outW.close()
         print "\nOutput file:", rawCorpusPath + ".TAGGED"
 
 def printHelp():
-    print "\n===== Usage ====="  
+    print "\n===== Usage ====="
     print '\n#1: To train RDRPOSTagger for English on a gold standard training corpus with Penn Treebank POS tags:'
     print '\npython RDRPOSTagger4En.py train PATH-TO-GOLD-STANDARD-TRAINING-CORPUS'
     print '\nExample: python RDRPOSTagger4En.py train ../data/en/goldTrain'
@@ -60,7 +60,7 @@ def printHelp():
     print '\npython RDRPOSTagger4En.py tag PATH-TO-TRAINED-MODEL PATH-TO-LEXICON PATH-TO-RAW-TEXT-CORPUS'
     print '\nExample: python RDRPOSTagger4En.py tag ../data/en/goldTrain.RDR ../data/en/goldTrain.DICT ../data/en/rawTest'
     print '\n#3: Find the full usage at http://rdrpostagger.sourceforge.net !'
-    
+
 def run(args = sys.argv[1:]):
     if (len(args) == 0):
         printHelp()
@@ -71,22 +71,23 @@ def run(args = sys.argv[1:]):
             createLexicon(args[1], 'full')
             createLexicon(args[1], 'short')
             print "\nExtract from the gold standard training corpus a raw text corpus", args[1] + ".RAW"
-            getRawText(args[1], args[1] + ".RAW")      
+            getRawText(args[1], args[1] + ".RAW")
             print "\nPerform initially POS tagging on the raw text corpus, to create", args[1] + ".INIT"
             DICT = readDictionary(args[1] + ".sDict")
             initializeEnCorpus(DICT, args[1] + ".RAW", args[1] + ".INIT")
-            print '\nLearn a tree model of rules for English POS tagging from %s and %s' % (args[1], args[1] + ".INIT")       
-            rdrTree = SCRDRTreeLearner(THRESHOLD[0], THRESHOLD[1]) 
-            rdrTree.learnRDRTree(args[1] + ".INIT", args[1])  
+            print '\nLearn a tree model of rules for English POS tagging from %s and %s' % (args[1], args[1] + ".INIT")
+            rdrTree = SCRDRTreeLearner(THRESHOLD[0], THRESHOLD[1])
+            rdrTree.learnRDRTree(args[1] + ".INIT", args[1])
             print "\nWrite the learned tree model to file ", args[1] + ".RDR"
-            rdrTree.writeToFile(args[1] + ".RDR")                
-            print '\nDone!'    
+            rdrTree.writeToFile(args[1] + ".RDR")
+            print '\nDone!'
             os.remove(args[1] + ".INIT")
             os.remove(args[1] + ".RAW")
-            os.remove(args[1] + ".sDict")   
+            os.remove(args[1] + ".sDict")
         except Exception, e:
             print "\nERROR ==> ", e
             printHelp()
+            raise e
     elif args[0].lower() == "tag":
         try:
             r = RDRPOSTagger4En()
@@ -99,9 +100,10 @@ def run(args = sys.argv[1:]):
         except Exception, e:
             print "\nERROR ==> ", e
             printHelp()
+            raise e
     else:
         printHelp()
-        
+
 if __name__ == "__main__":
     run()
     pass

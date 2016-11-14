@@ -5,7 +5,7 @@ import re
 def isAbbre(word):
 
     word = unicode(word, "utf-8")
-    for i in xrange(len(word)):
+    for i in range(len(word)):
         if isVnLowerChar(word[i]) or word[i] == "_":
             return False
     return True
