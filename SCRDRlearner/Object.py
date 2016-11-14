@@ -51,12 +51,12 @@ def getObject(wordTags, index):#Sequence of "Word/Tag"
     nextWord1 = nextTag1 = nextWord2 = nextTag2 = ""
     suffixL2 = suffixL3 = suffixL4 = ""
 
-    decodedW = word.decode("utf-8")
+    decodedW = word
     if len(decodedW) >= 4:
-        suffixL3 = decodedW[-3:].encode("utf-8")
-        suffixL2 = decodedW[-2:].encode("utf-8")
+        suffixL3 = decodedW[-3:]
+        suffixL2 = decodedW[-2:]
     if len(decodedW) >= 5:
-        suffixL4 = decodedW[-4:].encode("utf-8")
+        suffixL4 = decodedW[-4:]
 
     if index > 0:
         preWord1, preTag1 = getWordTag(wordTags[index - 1])

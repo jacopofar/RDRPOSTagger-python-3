@@ -241,7 +241,7 @@ class SCRDRTreeLearner(SCRDRTree):
                                 continue
                             matchingCounts[tag][rule1] -= 1
 
-            node = Node(rule, "object.conclusion = \"" + correctTag + "\"", currentNode, None, None, cornerstoneCases)
+            node = Node.Node(rule, "object.conclusion = \"" + correctTag + "\"", currentNode, None, None, cornerstoneCases)
 
             if not elseChild:
                 currentNode.exceptChild = node
@@ -253,7 +253,7 @@ class SCRDRTreeLearner(SCRDRTree):
             self.buildNodeForObjectSet(needToCorrectObjects, currentNode)
 
     def learnRDRTree(self, initializedCorpus, goldStandardCorpus):
-        self.root = Node("True", "object.conclusion = \"NN\"", None, None, None, [], 0)
+        self.root = Node.Node("True", "object.conclusion = \"NN\"", None, None, None, [], 0)
 
         objects = getObjectDictionary(initializedCorpus, goldStandardCorpus)
 
@@ -266,7 +266,7 @@ class SCRDRTreeLearner(SCRDRTree):
                 for rule in rules:
                     correctCounts[rule] = correctCounts.setdefault(rule, 0) + 1
 
-            node = Node("object.tag == \"" + initializedTag + "\"", "object.conclusion = \"" + initializedTag + "\"", self.root, None, None, [], 1)
+            node = Node.Node("object.tag == \"" + initializedTag + "\"", "object.conclusion = \"" + initializedTag + "\"", self.root, None, None, [], 1)
 
             if self.root.exceptChild == None:
                 self.root.exceptChild = node
@@ -283,7 +283,7 @@ class SCRDRTreeLearner(SCRDRTree):
                 if imp < self.improvedThreshold:
                     break
 
-                node = Node(rule, "object.conclusion = \"" + correctTag + "\"", currentNode, None, None, cornerstoneCases, 2)
+                node = Node.Node(rule, "object.conclusion = \"" + correctTag + "\"", currentNode, None, None, cornerstoneCases, 2)
 
                 if not elseChild:
                     currentNode1.exceptChild = node

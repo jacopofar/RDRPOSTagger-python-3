@@ -52,11 +52,11 @@ def createLexicon(corpusFilePath, fullLexicon):
 
     for word in wordTagCounter:
         tagFreq4Word = wordTagCounter[word]
-        pairs = tagFreq4Word.items()
+        pairs = list(tagFreq4Word.items())
         pairs.sort(key = itemgetter(1), reverse = True)
         tag = pairs[0][0]
 
-        decodedWord = word.decode("utf-8")
+        decodedWord = word
         isCapital = decodedWord[0].isupper()
 
         if fullLexicon == 'full':
@@ -84,30 +84,30 @@ def createLexicon(corpusFilePath, fullLexicon):
 
             if len(decodedWord) >= 4:
                 suffix = ".*" + decodedWord[-3:]
-                add2WordTagFreqDict(suffix.encode("utf-8"), tag, suffixDictCounter)
+                add2WordTagFreqDict(suffix, tag, suffixDictCounter)
                 suffix = ".*" + decodedWord[-2:]
-                add2WordTagFreqDict(suffix.encode("utf-8"), tag, suffixDictCounter)
+                add2WordTagFreqDict(suffix, tag, suffixDictCounter)
             if len(decodedWord) >= 5:
                 suffix = ".*" + decodedWord[-4:]
-                add2WordTagFreqDict(suffix.encode("utf-8"), tag, suffixDictCounter)
+                add2WordTagFreqDict(suffix, tag, suffixDictCounter)
             if len(decodedWord) >= 6:
                 suffix = ".*" + decodedWord[-5:]
-                add2WordTagFreqDict(suffix.encode("utf-8"), tag, suffixDictCounter)
+                add2WordTagFreqDict(suffix, tag, suffixDictCounter)
 
     from collections import OrderedDict
-    dictionary = OrderedDict(sorted(dictionary.iteritems(), key = itemgetter(0)))
+    dictionary = OrderedDict(sorted(dictionary.items(), key = itemgetter(0)))
 
     # Get the most frequent tag in the lexicon to label unknown words and numbers
-    tagCounter_Alphabet = OrderedDict(sorted(tagCounter_Alphabet.iteritems(), key = itemgetter(1), reverse = True))
-    tagCounter_CapitalizedWord = OrderedDict(sorted(tagCounter_CapitalizedWord.iteritems(), key = itemgetter(1), reverse = True))
-    tagCounter_Numeric = OrderedDict(sorted(tagCounter_Numeric.iteritems(), key = itemgetter(1), reverse = True))
-    tag4UnknWord = tagCounter_Alphabet.keys()[0]
+    tagCounter_Alphabet = OrderedDict(sorted(tagCounter_Alphabet.items(), key = itemgetter(1), reverse = True))
+    tagCounter_CapitalizedWord = OrderedDict(sorted(tagCounter_CapitalizedWord.items(), key = itemgetter(1), reverse = True))
+    tagCounter_Numeric = OrderedDict(sorted(tagCounter_Numeric.items(), key = itemgetter(1), reverse = True))
+    tag4UnknWord = list(tagCounter_Alphabet.keys())[0]
     tag4UnknCapitalizedWord = tag4UnknWord
     tag4UnknNum = tag4UnknWord
     if len(tagCounter_CapitalizedWord) > 0:
-        tag4UnknCapitalizedWord = tagCounter_CapitalizedWord.keys()[0]
+        tag4UnknCapitalizedWord = list(tagCounter_CapitalizedWord.keys())[0]
     if len(tagCounter_Numeric) > 0:
-        tag4UnknNum = tagCounter_Numeric.keys()[0]
+        tag4UnknNum = list(tagCounter_Numeric.keys())[0]
 
     # Write to file
     fileSuffix = ".sDict"
@@ -124,7 +124,7 @@ def createLexicon(corpusFilePath, fullLexicon):
 
     for suffix in suffixDictCounter:
         tagFreq4Suffix = suffixDictCounter[suffix]
-        pairs = tagFreq4Suffix.items()
+        pairs = list(tagFreq4Suffix.items())
         pairs.sort(key = itemgetter(1), reverse = True)
         tag = pairs[0][0]
         freq = pairs[0][1]
