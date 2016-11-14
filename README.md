@@ -1,5 +1,7 @@
 ## RDRPOSTagger ##
 
+This is a Python 3 porting of RDRPOSTagger, the original for Python 2 is [here](https://github.com/datquocnguyen/RDRPOSTagger)
+
 **RDRPOSTagger** is a robust, easy-to-use and language-independent toolkit for POS and morphological tagging. It employs an error-driven approach to automatically construct tagging rules in the form of a binary tree. The main properties of RDRPOSTagger are as follows:
 
 - RDRPOSTagger obtains very fast performance in both learning and tagging process.
@@ -19,5 +21,3 @@ The general architecture and experimental results of RDRPOSTagger can be found i
 RDRPOSTagger is also available to download (10MB .zip file including all pre-trained models) at: [https://sourceforge.net/projects/rdrpostagger/files/RDRPOSTagger_v1.2.3.zip](https://sourceforge.net/projects/rdrpostagger/files/RDRPOSTagger_v1.2.3.zip)
 
 **Find more information about RDRPOSTagger at its website:** [http://rdrpostagger.sourceforge.net/](http://rdrpostagger.sourceforge.net/)
-
-
